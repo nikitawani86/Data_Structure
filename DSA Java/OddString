@@ -1,0 +1,15 @@
+import java.util.Scanner;
+public class oddString {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		String str = sc.nextLine();
+		char[] ch = str.toCharArray();
+		for(int i=1;i<ch.length;i=i+2) {
+			System.out.println(ch[i]);
+			
+		}
+	}
+
+}
