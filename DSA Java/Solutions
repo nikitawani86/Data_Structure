@@ -1,0 +1,92 @@
+package tcs;
+import java.util.*;
+public class Moviesolution {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		Movie m[] = new Movie[4];
+		for(int i=0;i<4;i++) {
+			String movieName=sc.nextLine();
+			String company=sc.nextLine();
+			String genre=sc.nextLine();
+			int budget=sc.nextInt();sc.nextLine();
+			
+			m[i]=new Movie(movieName,company,genre,budget);
+			
+		}
+		String input1=sc.nextLine();
+		String[] obj=getMovieByGenre(m,input1);
+			for(int i=0;i<obj.length;i++) {
+				
+			System.out.println(obj[i]);
+			}
+			
+		}
+		
+
+	
+	public static String[] getMovieByGenre(Movie[] m,String input1) {
+		String arr[]=new String[0];
+		for(int i=0;i<4;i++) 
+		{
+			if(m[i].genre.equalsIgnoreCase(input1)) 
+			{
+				if(m[i].budget>80000000)
+				arr=Arrays.copyOf(arr, arr.length+1);
+				arr[arr.length-1]="High budget Movie";
+				//return arr;
+			}
+			else 
+			{
+				arr=Arrays.copyOf(arr, arr.length+1);
+				arr[arr.length-1]="Low budget Movie";
+			}
+		}
+		
+		return arr;
+	}
+	
+	
+
+}
+class Movie{
+	String movieName;
+	String company;
+	String genre;
+	int budget;
+	
+	
+	Movie(String movieName,String company,String genre,int budget){
+		this.movieName=movieName;
+		this.company=company;
+		this.genre=genre;
+		this.budget=budget;
+		
+	}
+	public String getmovieName() {
+		return movieName;
+	}
+	public void setmovieName(String movieName) {
+		this.movieName=movieName;
+	}
+	public String getMovieName() {
+		return movieName;
+	}
+	public void setMovieName(String movieName) {
+		this.movieName = movieName;
+	}
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	public String getGenre() {
+		return genre;
+	}
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+	
+}
