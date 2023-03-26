@@ -1,0 +1,125 @@
+import java.util.*;
+public class HotelSolution {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Hotel[] hotel=new Hotel[4];
+		Scanner sc = new Scanner(System.in);
+		for(int i=0;i<4;i++) {
+			int hotelId=sc.nextInt();sc.nextLine();
+			String hotelName=sc.nextLine();
+			String dateOfBooking=sc.nextLine();
+			int noOfRoomsBooked=sc.nextInt();sc.nextLine();
+			String wifiFacility=sc.nextLine();
+			double totalBill=sc.nextDouble();sc.nextLine();
+			
+			hotel[i]=new Hotel(hotelId,hotelName,dateOfBooking,noOfRoomsBooked,wifiFacility,totalBill);
+		}
+		String input1= sc.nextLine();
+		String input2= sc.nextLine();
+		int obj = noOfRoomsBookedInGivenMonth(hotel,input1);
+		if(obj!=0) {
+			System.out.println(obj);
+			
+		}else {
+			System.out.println("No rooms booked in the given month");
+		}
+		int obj2 =searchHotelByWifiOption(hotel,input2);
+		if(obj2!=0) {
+			System.out.println(obj2);
+		}else {
+			System.out.println("No such option available");
+		}
+		
+
+	}
+	public static int noOfRoomsBookedInGivenMonth(Hotel[] hotel,String input1) {
+		int count=0;
+		for(int i=0;i<4;i++) {
+			if(hotel[i].getdateOfBooking().contains(input1)) {
+				count=count+hotel[i].noOfRoomsBooked;;
+				 return count;
+			}
+			
+		}
+		return 0;
+	}
+	public static int searchHotelByWifiOption(Hotel[] hotel,String input2) {
+		int id[]=new int[0];
+		
+		for(int i=0;i<4;i++) {
+			if(hotel[i].wifiFacility.equalsIgnoreCase(input2)) {
+				id = Arrays.copyOf(id,id.length+1);
+				id[id.length-1]=hotel[i].hotelId;
+				Arrays.sort(id);
+			}
+			
+		}
+		if(id.length>0)
+		{
+			return id[id.length-2];
+		}
+		else 
+		{
+			return 0;
+		}
+		
+	}
+
+}
+class Hotel{
+	int hotelId;
+	String hotelName;
+	String dateOfBooking; 
+	int noOfRoomsBooked;
+	String wifiFacility;
+	double totalBill;
+	
+	Hotel(int hotelId,String hotelName,String dateOfBooking,int noOfRoomsBooked,String wifiFacility,double totalBill){
+		this.hotelId=hotelId;
+		this.hotelName=hotelName;
+		this.dateOfBooking=dateOfBooking;
+		this.noOfRoomsBooked=noOfRoomsBooked;
+		this.wifiFacility=wifiFacility;
+		this.totalBill=totalBill;
+		
+	}
+	
+	public int gethotelId() {
+		return hotelId;
+	}
+	public void sethotelId(int hotelId) {
+		this.hotelId=hotelId;
+	}
+	public String gethotelName() {
+		return hotelName;
+	}
+	public void sethotelName(String hotelName) {
+		this.hotelName=hotelName;
+	}
+	public String getdateOfBooking() {
+		return dateOfBooking;
+	}
+	public void setdateOfBooking(String dateOfBooking) {
+		this.dateOfBooking=dateOfBooking;
+	}
+	public int getnoOfRoomsBooked() {
+		return noOfRoomsBooked;
+	}
+	public void setnoOfRoomsBooked(int noOfRoomsBooked) {
+		this.noOfRoomsBooked=noOfRoomsBooked;
+	}
+	public String getwifiFacility() {
+		return wifiFacility;
+	}
+	public void setwifiFacility() {
+		this.wifiFacility=wifiFacility;
+	}
+	public double gettotalBill() {
+		return totalBill;
+	}
+	public void settotalBill(double totalBill) {
+		this.totalBill=totalBill;
+	}
+}
+
